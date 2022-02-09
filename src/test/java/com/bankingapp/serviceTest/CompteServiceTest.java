@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,6 +33,12 @@ public class CompteServiceTest {
         Compte actualCompte = compteService.create(getDummyUser());
 
         assertThat(actualCompte.getUser()).isEqualTo(dummyCompte.getUser());
+    }
+
+    @Test
+    public void testCreate_invalidUser() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.create(null));
     }
 
     private Compte getDummyCompte() {
