@@ -20,8 +20,15 @@ public class CompteController {
         this.userService = userService;
     }
 
-/*    @PostMapping("/ouverture/compte")
-    public Compte ouvertureCompte(@ModelAttribute("NouveauClient") User user) {
+    @PostMapping("/ouverture/compte")
+    public String ouvertureCompte(@ModelAttribute("NouveauClient") User user) {
+        User nouveauClient = userService.create(user);
 
-    }*/
+        Compte nouveauCompte = new Compte();
+        nouveauCompte.setUser(nouveauClient);
+        nouveauCompte.setSolde("0.00");
+        compteService.create(nouveauCompte);
+
+        return "redirect:/dashboard";
+    }
 }
