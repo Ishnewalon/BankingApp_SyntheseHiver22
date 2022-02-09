@@ -15,12 +15,9 @@ public class CompteService {
         this.compteRepository = compteRepository;
     }
 
-    public Compte create(User user) {
-        Assert.isTrue(user != null, "Le client doit exister");
-        Compte nouveauCompte = new Compte();
-        nouveauCompte.setUser(user);
-        nouveauCompte.setSolde("0.00");
+    public Compte create(Compte compte) {
+        Assert.isTrue(compte != null, "Le compte doit exister");
 
-        return compteRepository.save(nouveauCompte);
+        return compteRepository.save(compte);
     }
 }

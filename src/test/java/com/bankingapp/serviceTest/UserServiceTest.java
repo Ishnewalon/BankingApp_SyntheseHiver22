@@ -1,10 +1,8 @@
 package com.bankingapp.serviceTest;
 
-
-import com.bankingapp.entity.Compte;
 import com.bankingapp.entity.User;
-import com.bankingapp.repository.CompteRepository;
-import com.bankingapp.service.CompteService;
+import com.bankingapp.repository.UserRepository;
+import com.bankingapp.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,37 +15,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class CompteServiceTest {
+public class UserServiceTest {
 
     @InjectMocks
-    private CompteService compteService;
+    private UserService userService;
 
     @Mock
-    private CompteRepository compteRepository;
+    private UserRepository userRepository;
 
     @Test
-    public void testCreate_validCompte() {
-        Compte dummyCompte = getDummyCompte();
-        when(compteRepository.save(any())).thenReturn(dummyCompte);
+    public void testCreate_validUser() {
+        User dummyUser = getDummyUser();
+        when(userRepository.save(any())).thenReturn(dummyUser);
 
-        Compte actualCompte = compteService.create(getDummyCompte());
+        User actualUser = userService.create(getDummyUser());
 
-        assertThat(actualCompte.getUser()).isEqualTo(dummyCompte.getUser());
+        assertThat(actualUser.getCourriel()).isEqualTo(dummyUser.getCourriel());
     }
 
     @Test
-    public void testCreate_invalidCompte() {
+    public void testCreate_invalidUser() {
         assertThrows(IllegalArgumentException.class,
-                () -> compteService.create(null));
-    }
-
-    private Compte getDummyCompte() {
-        Compte dummyCompte = new Compte();
-        dummyCompte.setId(1);
-        dummyCompte.setSolde("100.00");
-        dummyCompte.setUser(getDummyUser());
-
-        return dummyCompte;
+                () -> userService.create(null));
     }
 
     private User getDummyUser() {
