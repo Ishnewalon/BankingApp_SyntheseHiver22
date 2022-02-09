@@ -2,9 +2,11 @@ package com.bankingapp.controllerTest;
 
 import com.bankingapp.entity.Compte;
 import com.bankingapp.entity.User;
+import com.bankingapp.service.CompteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -23,6 +25,9 @@ public class CompteControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    CompteService compteService;
+
     @Test
     public void testUserSignUp() throws Exception {
         Compte dummyCompte = getDummyCompte();
@@ -37,7 +42,7 @@ public class CompteControllerTest {
         final MockHttpServletResponse response = mvcResult.getResponse();
         Compte actualCompte = MAPPER.readValue(response.getContentAsString(), Compte.class);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
-        assertThat(actualCompte).isEqualTo(dummyCompte);
+        assertThat(actualCompte.getUser()).isEqualTo(getDummyUser());
     }
 
     private Compte getDummyCompte() {
