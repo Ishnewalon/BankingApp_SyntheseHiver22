@@ -1,5 +1,6 @@
 package com.bankingapp.controllerTest;
 
+import com.bankingapp.entity.Compte;
 import com.bankingapp.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -15,27 +16,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class UserControllerTest {
+public class CompteControllerTest {
 
     private final ObjectMapper MAPPER = new ObjectMapper();
 
     @Autowired
     private MockMvc mockMvc;
 
-/*    @Test
+    @Test
     public void testUserSignUp() throws Exception {
-        User dummyUser = getDummyUser();
-        when(userService.create(any())).thenReturn(dummyUser);
+        Compte dummyCompte = getDummyCompte();
+        when(compteService.create(any())).thenReturn(dummyCompte);
 
         MvcResult mvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.post("/inscrire/client")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(MAPPER.writeValueAsString(dummyUser)))
-                    .andReturn();
+                MockMvcRequestBuilders.post("/ouverture/compte")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MAPPER.writeValueAsString(dummyCompte)))
+                .andReturn();
 
         final MockHttpServletResponse response = mvcResult.getResponse();
-        User actualUser = MAPPER.readValue(response.getContentAsString(), User.class);
+        Compte actualCompte = MAPPER.readValue(response.getContentAsString(), Compte.class);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
-        assertThat(actualUser.getNom()).isEqualTo(dummyUser);
-    }*/
+        assertThat(actualCompte).isEqualTo(dummyCompte);
+    }
 }
