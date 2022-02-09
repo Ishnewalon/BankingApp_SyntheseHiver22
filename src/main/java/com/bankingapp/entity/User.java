@@ -26,7 +26,7 @@ public class User {
 
     private String adresse;
 
-    private String age;
+    private int age;
 
     private String occupation;
 

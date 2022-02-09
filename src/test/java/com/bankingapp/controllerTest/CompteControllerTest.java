@@ -39,4 +39,28 @@ public class CompteControllerTest {
         assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
         assertThat(actualCompte).isEqualTo(dummyCompte);
     }
+
+    private Compte getDummyCompte() {
+        Compte dummyCompte = new Compte();
+        dummyCompte.setId(1);
+        dummyCompte.setSolde("100.00");
+        dummyCompte.setUser(getDummyUser());
+
+        return dummyCompte;
+    }
+
+    private User getDummyUser() {
+        User dummyUser = new User();
+        dummyUser.setId(35);
+        dummyUser.setPrenom("Cindi");
+        dummyUser.setNom("Desjardins");
+        dummyUser.setOccupation("Consultante");
+        dummyUser.setAge(45);
+        dummyUser.setAdresse("1234 rue Inexistant, Montreal, QC");
+        dummyUser.setCourriel("c.desj@gmail.com");
+        dummyUser.setMdp("consult");
+        dummyUser.setTelephone("514-654-2346");
+
+        return dummyUser;
+    }
 }
