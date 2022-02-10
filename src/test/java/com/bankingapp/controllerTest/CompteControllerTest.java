@@ -16,6 +16,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,15 +42,16 @@ public class CompteControllerTest {
         when(userService.create(any())).thenReturn(getDummyUser());
         when(compteService.create(any())).thenReturn(dummyCompte);
 
-        MvcResult mvcResult = mockMvc.perform(
+        mockMvc.perform(
                 MockMvcRequestBuilders.post("/ouverture/compte")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(MAPPER.writeValueAsString(dummyCompte)))
-                .andReturn();
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
 
-        final MockHttpServletResponse response = mvcResult.getResponse();
+      //  final MockHttpServletResponse response = mvcResult.getResponse();
       //  String actualUrl = MAPPER.readValue(response.getContentAsString(), String.class);
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.FOUND.value());
+      //  assertThat(response.getStatus()).isEqualTo(HttpStatus.FOUND.value());
       //  assertThat(actualUrl).isEqualTo("redirect:/dashboard");
     }
 
