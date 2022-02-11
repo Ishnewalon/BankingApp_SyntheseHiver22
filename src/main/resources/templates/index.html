@@ -16,12 +16,30 @@
           <h1 id="bankName">Bienvenue à la banque Money For Nothing</h1>
         </div>
       </div>
-      <div class="row">
-        <img src="../../static/images/bank.png" width="40%"
-             th:src="@{/images/bank.png}" />
-
+      <div th:align="center" class="row" >
+        <form method="get" >
+          <div class="row">
+            <h2>Utilisateur
+            </h2>
+            <input id="username"/>
+          </div>
+          <div class="row">
+            <h2>
+              Mot de Passe
+            </h2>
+            <input id="password"/>
+          </div>
+          <div class="row">
+            <input id="signin" type="submit" class="btn btn-success" value="Connexion">
+          </div>
+        </form>
       </div>
-    </div>
+
+      <div class="row">
+        <img src="../../static/images/bank.png" width="30%"
+             th:src="@{/images/bank.png}" />
+      </div>
+
   </div>
 </body>
 </html>

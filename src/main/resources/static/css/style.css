@@ -26,6 +26,14 @@ img {
     background-color: #45cde6;
 }
 
+form {
+    margin: 25px;
+}
+
+#signin {
+    margin-top: 5px;
+}
+
 html {
     background-color: bisque;
 }
