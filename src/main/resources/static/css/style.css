@@ -1,0 +1,31 @@
+.navbar-default {
+    background: #45cde6;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bankName {
+    text-align: center;
+    background-color: #45cde6;
+}
+
+html {
+    background-color: bisque;
+}
