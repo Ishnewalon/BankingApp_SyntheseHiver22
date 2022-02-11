@@ -27,13 +27,14 @@ img {
 }
 
 form {
-    margin: 25px;
+    margin-bottom: 25px;
 }
 
 #signin {
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
-html {
-    background-color: bisque;
+h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
