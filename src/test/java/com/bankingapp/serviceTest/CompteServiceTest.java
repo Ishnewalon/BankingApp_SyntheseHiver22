@@ -41,6 +41,18 @@ public class CompteServiceTest {
                 () -> compteService.create(null));
     }
 
+    @Test
+    public void testFindAccount_ValidCompte() {
+        Compte dummyCompte = getDummyCompte();
+        User dummyUser = getDummyUser();
+        when(compteRepository.getByUser_CourrielAndUser_Mdp(any(), any())).thenReturn(dummyCompte);
+
+        Compte actualCompte = compteService.findAccount(dummyUser.getCourriel(), dummyUser.getMdp());
+
+        assertThat(actualCompte.getUser()).isEqualTo(dummyCompte.getUser());
+    }
+    
+
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);

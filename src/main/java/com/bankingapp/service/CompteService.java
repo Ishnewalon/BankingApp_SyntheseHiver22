@@ -1,7 +1,6 @@
 package com.bankingapp.service;
 
 import com.bankingapp.entity.Compte;
-import com.bankingapp.entity.User;
 import com.bankingapp.repository.CompteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -19,5 +18,11 @@ public class CompteService {
         Assert.isTrue(compte != null, "Le compte doit exister");
 
         return compteRepository.save(compte);
+    }
+
+    public Compte findAccount(String email, String password) {
+        Assert.isTrue(email != null && password != null, "Le courriel ou le mot de passe" +
+                "ne sont pas valide");
+        return compteRepository.getByUser_CourrielAndUser_Mdp(email, password);
     }
 }

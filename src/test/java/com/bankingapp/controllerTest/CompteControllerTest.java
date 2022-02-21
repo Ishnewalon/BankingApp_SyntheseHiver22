@@ -54,7 +54,7 @@ public class CompteControllerTest {
     @Test
     public void testUserLogin() throws Exception {
         Compte dummyCompte = getDummyCompte();
-        when(compteService.findAccount(any(), any())).thenReturn(getDummyUser());
+        when(compteService.findAccount(any(), any())).thenReturn(dummyCompte);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/login")
