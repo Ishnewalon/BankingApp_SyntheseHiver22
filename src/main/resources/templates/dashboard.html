@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+    <title>Money For Nothing</title>
+</head>
+<body>
+    <div class="container">
+        <div th:object="${account}" >
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a th:href="@{/dashboard}">Déposer des fonds</a></li>
+                        <li><a th:href="@{/dashboard}">Faire un retrait</a></li>
+                        <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
+                    </ul>
+
+                </div>
+            </nav>
+            <h1>Bonjour
+                <span th:text="${account.user.prenom}"></span>
+                <span th:text="${account.user.nom}"></span>
+            </h1>
+        </div>
+    </div>
+</body>
+</html>
