@@ -49,10 +49,19 @@ public class CompteControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isFound())
                 .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
 
-      //  final MockHttpServletResponse response = mvcResult.getResponse();
-      //  String actualUrl = MAPPER.readValue(response.getContentAsString(), String.class);
-      //  assertThat(response.getStatus()).isEqualTo(HttpStatus.FOUND.value());
-      //  assertThat(actualUrl).isEqualTo("redirect:/dashboard");
+    }
+
+    @Test
+    public void testUserLogin() throws Exception {
+        Compte dummyCompte = getDummyCompte();
+        when(compteService.findAccount(any(), any())).thenReturn(getDummyUser());
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MAPPER.writeValueAsString(dummyCompte)))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
     }
 
     private Compte getDummyCompte() {
