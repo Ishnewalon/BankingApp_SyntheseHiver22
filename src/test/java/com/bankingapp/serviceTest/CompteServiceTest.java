@@ -42,7 +42,7 @@ public class CompteServiceTest {
     }
 
     @Test
-    public void testFindAccount_ValidCompte() {
+    public void testFindAccount_validCompte() {
         Compte dummyCompte = getDummyCompte();
         User dummyUser = getDummyUser();
         when(compteRepository.getByUser_CourrielAndUser_Mdp(any(), any())).thenReturn(dummyCompte);
@@ -51,7 +51,13 @@ public class CompteServiceTest {
 
         assertThat(actualCompte.getUser()).isEqualTo(dummyCompte.getUser());
     }
-    
+
+    @Test
+    public void testFindAccount_invalidCompte() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.findAccount(null, null));
+    }
+
 
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
