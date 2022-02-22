@@ -1,13 +1,16 @@
 package com.bankingapp.controller;
 
 import com.bankingapp.entity.Compte;
+import com.bankingapp.entity.Credentials;
 import com.bankingapp.entity.User;
 import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -34,10 +37,11 @@ public class CompteController {
         return "redirect:/dashboard";
     }
 
-    @GetMapping("/login")
-    public String login(Model model, @ModelAttribute("Credentials") User user) {
-        model.addAttribute("account",
-                compteService.findAccount(user.getCourriel(), user.getMdp()));
-        return "redirect:/dashboard";
+    @PostMapping("/login")
+    public String login(@ModelAttribute(name="credentials") Credentials credentials, Model model) {
+        Compte compte = compteService.findAccount(credentials.getCourriel(), credentials.getMdp());
+        model.addAttribute("account", compte
+                );
+        return "dashboard";
     }
 }

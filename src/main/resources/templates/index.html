@@ -12,17 +12,17 @@
         <h2 id="bankName">Bienvenue à la banque Money For Nothing</h2>
       </div>
       <div th:align="center" >
-        <form method="get" >
+        <form method="post" th:action="@{/login}" th:object="credentials" >
           <div class="row">
-            <h2>Utilisateur
+            <h2>Courriel
             </h2>
-            <input id="username"/>
+            <input id="courriel" name="courriel"/>
           </div>
           <div class="row">
             <h2>
               Mot de Passe
             </h2>
-            <input id="password"/>
+            <input id="mdp" type="password" name="mdp"/>
           </div>
           <div class="row">
             <input id="signin" type="submit" class="btn btn-success" value="Connexion">
