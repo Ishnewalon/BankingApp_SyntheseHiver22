@@ -37,6 +37,11 @@ public class CompteController {
         return "redirect:/dashboard";
     }
 
+    @GetMapping("/loginPage")
+    public String goToLogin() {
+        return "login";
+    }
+
     @PostMapping("/login")
     public String login(@ModelAttribute(name="credentials") Credentials credentials, Model model) {
         Compte compte = compteService.findAccount(credentials.getCourriel(), credentials.getMdp());

@@ -11,30 +11,16 @@
       <div >
         <h2 id="bankName">Bienvenue à la banque Money For Nothing</h2>
       </div>
-      <div th:align="center" >
-        <form method="post" th:action="@{/login}" th:object="credentials" >
-          <div class="row">
-            <h2>Courriel
-            </h2>
-            <input id="courriel" name="courriel"/>
-          </div>
-          <div class="row">
-            <h2>
-              Mot de Passe
-            </h2>
-            <input id="mdp" type="password" name="mdp"/>
-          </div>
-          <div class="row">
-            <input id="signin" type="submit" class="btn btn-success" value="Connexion">
-          </div>
-        </form>
-      </div>
+
 
       <div >
         <img src="../../static/images/bank.png" width="30%"
              th:src="@{/images/bank.png}" />
       </div>
 
+      <form method="get" th:action="${'/loginPage'}">
+          <input type="submit" value="Se connecter">
+      </form>
   </div>
 </body>
 </html>

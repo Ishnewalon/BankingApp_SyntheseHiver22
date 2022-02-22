@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Logged in!</h2>
-        <!--<div th:object="${account}" >
+        <div th:object="${account}" >
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -20,6 +19,7 @@
                         <li><a th:href="@{/dashboard}">Déposer des fonds</a></li>
                         <li><a th:href="@{/dashboard}">Faire un retrait</a></li>
                         <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
+
                     </ul>
 
                 </div>
@@ -28,7 +28,7 @@
                 <span th:text="${account.user.prenom}"></span>
                 <span th:text="${account.user.nom}"></span>
             </h1>
-        </div>-->
+        </div>
     </div>
 </body>
 </html>

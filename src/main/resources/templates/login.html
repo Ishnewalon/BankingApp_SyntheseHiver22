@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+  <title>Money For Nothing</title>
+</head>
+<body>
+  <div>
+
+    <div>
+      <h2 id="bankName">Money For Nothing</h2>
+    </div>
+
+    <div th:align="center" >
+      <form method="post" th:action="@{/login}" th:object="${credentials}" >
+        <div class="row">
+          <h2>Courriel
+          </h2>
+          <input id="courriel" name="courriel"/>
+        </div>
+        <div class="row">
+          <h2>
+            Mot de Passe
+          </h2>
+          <input id="mdp" type="password" name="mdp"/>
+        </div>
+        <div class="row">
+          <input id="signin" type="submit" class="btn btn-success" value="Connexion">
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>
