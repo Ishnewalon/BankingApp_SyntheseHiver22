@@ -7,10 +7,8 @@ import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,7 +24,7 @@ public class CompteController {
     }
 
     @PostMapping("/ouverture/compte")
-    public String ouvertureCompte(@ModelAttribute("NouveauClient") User user) {
+    public String ouvertureCompte(@ModelAttribute("nouveauClient") User user) {
         User nouveauClient = userService.create(user);
 
         Compte nouveauCompte = new Compte();
@@ -45,8 +43,7 @@ public class CompteController {
     @PostMapping("/login")
     public String login(@ModelAttribute(name="credentials") Credentials credentials, Model model) {
         Compte compte = compteService.findAccount(credentials.getCourriel(), credentials.getMdp());
-        model.addAttribute("account", compte
-                );
+        model.addAttribute("account", compte);
         return "dashboard";
     }
 }

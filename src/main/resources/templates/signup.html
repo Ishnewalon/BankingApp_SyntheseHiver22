@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+    <title>Money For Nothing</title>
+</head>
+<body>
+    <div>
+        <h2 id="bankName">Ouverture de compte</h2>
+    </div>
+
+    <div th:align="center" >
+        <form method="post" th:action="@{/ouverture/compte}" th:object="${nouveauClient}" >
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>
+                        Prénom
+                    </h2>
+                    <input id="prenom" name="prenom"/>
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        Nom
+                    </h2>
+                    <input id="nom" name="nom"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>
+                        Numéro de téléphone
+                    </h2>
+                    <input id="telephone" name="telephone"/>
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        Adresse
+                    </h2>
+                    <input id="adresse" name="adresse"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>
+                        Âge
+                    </h2>
+                    <input id="age" name="age"/>
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        Occupation
+                    </h2>
+                    <input id="occupation" name="occupation"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>
+                        Courriel
+                    </h2>
+                    <input id="courriel" name="courriel"/>
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        Mot de passe
+                    </h2>
+                    <input id=mdp name="mdp"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        Solde de départ
+                    </h2>
+                    <input id="solde" name="solde"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <input id="signup" type="submit" class="btn btn-success" value="Création">
+            </div>
+        </form>
+    </div>
+
+    </div>
+
+</body>
+</html>

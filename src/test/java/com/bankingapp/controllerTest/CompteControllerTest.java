@@ -48,7 +48,6 @@ public class CompteControllerTest {
                         .content(MAPPER.writeValueAsString(dummyCompte)))
                 .andExpect(MockMvcResultMatchers.status().isFound())
                 .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
-
     }
 
     @Test
