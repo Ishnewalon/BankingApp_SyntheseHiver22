@@ -8,17 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <div th:object="${credentials}" >
+        <div th:object="${account}" >
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
-
+                        <input type="hidden" th:name="compteCourrant" th:value="${account}"/>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a th:href="@{/dashboard}">Déposer des fonds</a></li>
                         <li><a th:href="@{/dashboard}">Faire un retrait</a></li>
-                        <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/signup}">Voir liste clients</a></li>
+                        <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
                         <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
                     </ul>
 

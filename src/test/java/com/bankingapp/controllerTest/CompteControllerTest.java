@@ -63,6 +63,18 @@ public class CompteControllerTest {
                 .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
     }
 
+    @Test
+    public void testCompteCreation() throws Exception {
+        Compte dummyCompte = new Compte();
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/signup")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(MAPPER.writeValueAsString(dummyCompte)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("signup"));
+    }
+
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);
