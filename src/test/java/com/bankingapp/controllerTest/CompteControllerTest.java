@@ -3,6 +3,7 @@ package com.bankingapp.controllerTest;
 import com.bankingapp.controller.CompteController;
 import com.bankingapp.entity.Compte;
 import com.bankingapp.entity.Credentials;
+import com.bankingapp.entity.NewAccountDTO;
 import com.bankingapp.entity.User;
 import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
@@ -39,16 +40,18 @@ public class CompteControllerTest {
 
     @Test
     public void testUserSignUp() throws Exception {
+        NewAccountDTO dummyNewAccountDTO = getDummyAccountDTO();
         Compte dummyCompte = getDummyCompte();
         when(userService.create(any())).thenReturn(getDummyUser());
         when(compteService.create(any())).thenReturn(dummyCompte);
+        when(compteService.findAccount(any(), any())).thenReturn(dummyCompte);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/ouverture/compte")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(MAPPER.writeValueAsString(dummyCompte)))
-                .andExpect(MockMvcResultMatchers.status().isFound())
-                .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
+                        .content(MAPPER.writeValueAsString(dummyNewAccountDTO)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("dashboard"));
     }
 
     @Test
@@ -102,5 +105,21 @@ public class CompteControllerTest {
         dummyUser.setTelephone("514-654-2346");
 
         return dummyUser;
+    }
+
+    private NewAccountDTO getDummyAccountDTO() {
+        NewAccountDTO dummyNewAccountDTO = new NewAccountDTO();
+        dummyNewAccountDTO.setPrenom("Cindi");
+        dummyNewAccountDTO.setNom("Desjardins");
+        dummyNewAccountDTO.setOccupation("Consultante");
+        dummyNewAccountDTO.setAge(45);
+        dummyNewAccountDTO.setAdresse("1234 rue Inexistant, Montreal, QC");
+        dummyNewAccountDTO.setCourriel("c.desj@gmail.com");
+        dummyNewAccountDTO.setMdp("consult");
+        dummyNewAccountDTO.setTelephone("514-654-2346");
+        dummyNewAccountDTO.setAdminEmail("a@admin.com");
+        dummyNewAccountDTO.setAdminPassword("password");
+
+        return dummyNewAccountDTO;
     }
 }
