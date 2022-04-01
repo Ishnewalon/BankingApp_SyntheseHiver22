@@ -2,6 +2,7 @@ package com.bankingapp.controllerTest;
 
 import com.bankingapp.controller.CompteController;
 import com.bankingapp.entity.Compte;
+import com.bankingapp.entity.Credentials;
 import com.bankingapp.entity.User;
 import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
@@ -52,23 +53,27 @@ public class CompteControllerTest {
 
     @Test
     public void testUserLogin() throws Exception {
+        Credentials dummyCredentials = new Credentials();
+        dummyCredentials.setCourriel("c.desj@gmail.com");
+        dummyCredentials.setMdp("consult");
         Compte dummyCompte = getDummyCompte();
         when(compteService.findAccount(any(), any())).thenReturn(dummyCompte);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.get("/login")
+                MockMvcRequestBuilders.post("/login")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(MAPPER.writeValueAsString(dummyCompte)))
-                .andExpect(MockMvcResultMatchers.status().isFound())
-                .andExpect(MockMvcResultMatchers.view().name("redirect:/dashboard"));
+                        .content(MAPPER.writeValueAsString(dummyCredentials)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("dashboard"));
     }
 
     @Test
     public void testCompteCreation() throws Exception {
-        Compte dummyCompte = new Compte();
+        Compte dummyCompte = getDummyCompte();
+        User dummyUser = getDummyUser();
 
         mockMvc.perform(
-                MockMvcRequestBuilders.get("/signup")
+                MockMvcRequestBuilders.get("/signup/" + dummyUser.getCourriel() + "/" + dummyUser.getMdp())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(MAPPER.writeValueAsString(dummyCompte)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
