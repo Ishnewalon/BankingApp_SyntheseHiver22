@@ -79,6 +79,18 @@ public class CompteControllerTest {
                 .andExpect(MockMvcResultMatchers.view().name("signup"));
     }
 
+    @Test
+    public void testGoToDeposit() throws Exception {
+        Compte dummyCompte = getDummyCompte();
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/toDeposit")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(MAPPER.writeValueAsString(dummyCompte)))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.view().name("deposit"));
+    }
+
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);
