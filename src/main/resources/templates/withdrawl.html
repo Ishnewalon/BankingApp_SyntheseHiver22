@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+      <html xmlns:th="http://www.thymeleaf.org">
+      <head lang="en">
+      <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+      <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+      <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+      <title>Money For Nothing</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <input type="hidden" th:name="compteCourrant" th:value="${account}"/>
+      <a class="navbar-brand" th:href="${'/dashboard/' + account}">Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a th:href="${'/toDeposit/' + account}">Déposer des fonds</a></li>
+      <li><a th:href="@{/dashboard}">Faire un retrait</a></li>
+      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
+      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
+    </ul>
+
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    Faire un retrait
+  </div>
+
+  <div>
+    <form method="post" th:action="${'/makeWithdrawl/' + account}" th:object="${withdrawlAmount}">
+      <div>
+        <label for="currentAmount">Fond présent</label>
+        <input id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+      </div>
+
+      <div>
+        <label for="moneyAmount">Montant à retirer</label>
+        <input id="moneyAmount" name="moneyAmount" type="number">
+      </div>
+
+      <div class="row">
+        <input id="deposit" type="submit" class="btn btn-success" value="Retirer">
+      </div>
+
+    </form>
+  </div>
+</div>
+</body>
+</html>
