@@ -7,9 +7,44 @@
   <title>Money For Nothing</title>
 </head>
 <body>
-<h1>Would you like to deposit?
-  <span th:text="${account.user.prenom}"></span>
-  <span th:text="${account.user.nom}"></span>
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+      <input type="hidden" th:name="compteCourrant" th:value="${account}"/>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a th:href="${'/toDeposit/' + account}">Déposer des fonds</a></li>
+      <li><a th:href="@{/dashboard}">Faire un retrait</a></li>
+      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
+      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
+    </ul>
+
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    Faire un dépôt
+  </div>
+
+  <div>
+      <form method="post" th:action="${'/makeDeposit/' + account}" th:object="${depositAmount}">
+       <div>
+         <label for="currentAmount">Fond présent</label>
+         <input id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+       </div>
+
+        <div>
+          <label for="depositAmount">Montant à déposer</label>
+          <input id="depositAmount" name="depositAmount" type="number">
+        </div>
+
+        <div class="row">
+          <input id="deposit" type="submit" class="btn btn-success" value="Déposer">
+        </div>
+
+      </form>
+  </div>
+</div>
 </body>
 </html>
