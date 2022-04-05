@@ -66,7 +66,7 @@ public class CompteController {
         return "signup";
     }
 
-    @GetMapping("/dashboard/{currentAccount}")
+    @GetMapping("/dashboard/{currentCompte}")
     public String goToDashboard(@PathVariable Compte currentCompte, Model model) {
         model.addAttribute("account", currentCompte);
         return "dashboard";
