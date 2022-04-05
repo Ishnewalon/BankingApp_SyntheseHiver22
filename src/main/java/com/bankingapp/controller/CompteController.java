@@ -85,4 +85,11 @@ public class CompteController {
         model.addAttribute("account", currentCompte);
         return "dashboard";
     }
+
+    @GetMapping("/toWithdrawl/{currentCompte}")
+    public String goToWithdrawl(@PathVariable Compte currentCompte, Model model) {
+        model.addAttribute("account", currentCompte);
+        model.addAttribute("depositAmount", new AmountDTO());
+        return "deposit";
+    }
 }
