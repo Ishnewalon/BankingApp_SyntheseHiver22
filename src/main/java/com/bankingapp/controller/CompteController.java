@@ -74,7 +74,7 @@ public class CompteController {
         return "dashboard";
     }
 
-    @GetMapping("/toDeposit/{account}")
+    @GetMapping("/toDeposit/{currentCompte}")
     public String goToDeposit(@PathVariable Compte currentCompte, Model model) {
         model.addAttribute("account", currentCompte);
         return "deposit";
