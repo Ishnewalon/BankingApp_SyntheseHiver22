@@ -92,4 +92,11 @@ public class CompteController {
         model.addAttribute("withdrawlAmount", new AmountDTO());
         return "withdrawl";
     }
+
+    @PostMapping("/makeWithdrawl/{currentCompte}")
+    public String makeWithdrawl(@ModelAttribute(name="withdrawlAmount") AmountDTO amountDTO, @PathVariable Compte currentCompte, Model model) {
+        currentCompte = compteService.reitrerMontant(amountDTO.getMoneyAmount(), currentCompte);
+        model.addAttribute("account", currentCompte);
+        return "dashboard";
+    }
 }
