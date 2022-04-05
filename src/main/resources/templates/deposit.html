@@ -19,7 +19,9 @@
       <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
       <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="@{/dashboard}">Voir liste clients</a></li>
     </ul>
-
+      <ul class="nav navbar-nav navbar-right">
+          <li><a th:href="@{/}">Se déconnecter</a></li>
+      </ul>
   </div>
 </nav>
 <div class="container">
