@@ -1,9 +1,6 @@
 package com.bankingapp.controller;
 
-import com.bankingapp.entity.Compte;
-import com.bankingapp.entity.Credentials;
-import com.bankingapp.entity.NewAccountDTO;
-import com.bankingapp.entity.User;
+import com.bankingapp.entity.*;
 import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -77,6 +74,7 @@ public class CompteController {
     @GetMapping("/toDeposit/{currentCompte}")
     public String goToDeposit(@PathVariable Compte currentCompte, Model model) {
         model.addAttribute("account", currentCompte);
+        model.addAttribute("depositAmount", new AmountDTO());
         return "deposit";
     }
 }
