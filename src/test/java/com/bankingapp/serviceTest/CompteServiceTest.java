@@ -58,6 +58,29 @@ public class CompteServiceTest {
                 () -> compteService.findAccount(null, null));
     }
 
+    @Test
+    public void testDeposerMontant_valid() {
+        Compte dummyCompte = getDummyCompte();
+        Compte dummyCompteModified = getDummyCompte();
+        dummyCompteModified.setSolde("200.00");
+        when(compteRepository.save(any())).thenReturn(dummyCompteModified);
+
+        Compte actualCompte = compteService.deposerMontant(100.0, dummyCompte);
+
+        assertThat(actualCompte.getSolde()).isEqualTo(dummyCompteModified.getSolde());
+    }
+
+    @Test
+    public void testDeposerMontant_invalidAmount() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.deposerMontant(0, getDummyCompte()));
+    }
+
+    @Test
+    public void testDeposerMontant_invalidCompte() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.deposerMontant(5, null));
+    }
 
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();

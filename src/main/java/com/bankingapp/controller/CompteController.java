@@ -66,8 +66,9 @@ public class CompteController {
         return "signup";
     }
 
-    @GetMapping("/dashboard")
-    public String goToDashboard() {
+    @GetMapping("/dashboard/{currentAccount}")
+    public String goToDashboard(@PathVariable Compte currentCompte, Model model) {
+        model.addAttribute("account", currentCompte);
         return "dashboard";
     }
 
@@ -76,5 +77,12 @@ public class CompteController {
         model.addAttribute("account", currentCompte);
         model.addAttribute("depositAmount", new AmountDTO());
         return "deposit";
+    }
+
+    @PostMapping("/makeDeposit/{currentCompte}")
+    public String makeDeposit(@ModelAttribute(name="depositAmount") AmountDTO amountDTO, @PathVariable Compte currentCompte, Model model) {
+     //   currentCompte = compteService.
+        model.addAttribute("account", currentCompte);
+        return "dashboard";
     }
 }
