@@ -81,12 +81,11 @@ public class CompteControllerTest {
 
     @Test
     public void testGoToDeposit() throws Exception {
-        Compte dummyCompte = getDummyCompte();
+        Credentials dummyCredentials = getDummyCredentisals();
 
         mockMvc.perform(
-                MockMvcRequestBuilders.get("/toDeposit")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(MAPPER.writeValueAsString(dummyCompte)))
+                MockMvcRequestBuilders.get("/toDeposit/" + dummyCredentials.getCourriel() + "/" + dummyCredentials.getMdp())
+                    .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isFound())
                 .andExpect(MockMvcResultMatchers.view().name("deposit"));
     }
@@ -129,5 +128,13 @@ public class CompteControllerTest {
         dummyNewAccountDTO.setAdminPassword("password");
 
         return dummyNewAccountDTO;
+    }
+
+    private Credentials getDummyCredentisals() {
+        Credentials dummyCredentials = new Credentials();
+        dummyCredentials.setCourriel("c.desj@gmail.com");
+        dummyCredentials.setMdp("consult");
+
+        return dummyCredentials;
     }
 }
