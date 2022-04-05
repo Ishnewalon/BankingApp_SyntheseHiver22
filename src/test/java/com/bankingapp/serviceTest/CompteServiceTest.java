@@ -82,6 +82,30 @@ public class CompteServiceTest {
                 () -> compteService.deposerMontant(5, null));
     }
 
+    @Test
+    public void testRetirerMontant_valid() {
+        Compte dummyCompte = getDummyCompte();
+        Compte dummyCompteModified = getDummyCompte();
+        dummyCompteModified.setSolde("50.00");
+        when(compteRepository.save(any())).thenReturn(dummyCompteModified);
+
+        Compte actualCompte = compteService.deposerMontant(50.0, dummyCompte);
+
+        assertThat(actualCompte.getSolde()).isEqualTo(dummyCompteModified.getSolde());
+    }
+
+    @Test
+    public void testRetirerMontant_invalidAmount() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.deposerMontant(-1, getDummyCompte()));
+    }
+
+    @Test
+    public void testRetirerMontant_invalidCompte() {
+        assertThrows(IllegalArgumentException.class,
+                () -> compteService.deposerMontant(5, null));
+    }
+
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);
