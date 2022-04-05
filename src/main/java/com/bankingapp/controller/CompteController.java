@@ -81,7 +81,7 @@ public class CompteController {
 
     @PostMapping("/makeDeposit/{currentCompte}")
     public String makeDeposit(@ModelAttribute(name="depositAmount") AmountDTO amountDTO, @PathVariable Compte currentCompte, Model model) {
-     //   currentCompte = compteService.
+        currentCompte = compteService.deposerMontant(amountDTO.getMoneyAmount(), currentCompte);
         model.addAttribute("account", currentCompte);
         return "dashboard";
     }
