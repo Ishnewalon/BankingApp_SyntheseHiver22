@@ -38,11 +38,21 @@
                         <th>Prénom</th>
                         <th>Courriel</th>
                         <th>Téléphone</th>
-                        <th>Age</th>
+                        <th>Âge</th>
                         <th>Occupation</th>
                         <th>Adresse</th>
                         <th>Solde</th>
-                        <th>Delete</th>
+                    </tr>
+                    <tr th:each="compte : ${accountList}">
+                        <td th:text="${compte.id}">Id</td>
+                        <td th:text="${compte.getUser().getNom()}">Nom</td>
+                        <td th:text="${compte.getUser().getPrenom()}">Prénom</td>
+                        <td th:text="${compte.getUser().getCourriel()}">Courriel</td>
+                        <td th:text="${compte.getUser().getTelephone()}">Téléphone</td>
+                        <td th:text="${compte.getUser().getAge()}">Âge</td>
+                        <td th:text="${compte.getUser().getOccupation()}">Occupation</td>
+                        <td th:text="${compte.getUser().getAdresse()}">Adresse</td>
+                        <td th:text="${compte.getSolde()}">Solde</td>
                     </tr>
 
                 </table>
