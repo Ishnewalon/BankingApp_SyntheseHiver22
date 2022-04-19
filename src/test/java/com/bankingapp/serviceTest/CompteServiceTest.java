@@ -112,7 +112,7 @@ public class CompteServiceTest {
     @Test
     public void testGetAllComptes() {
         List<Compte> dummyCompteListe = getDummyCompteList();
-        when(compteRepository.getAll()).thenReturn(dummyCompteListe);
+        when(compteRepository.findAll()).thenReturn(dummyCompteListe);
 
         List<Compte> actualCompteListe = compteService.getAllComptes();
 

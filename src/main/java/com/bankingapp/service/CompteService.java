@@ -45,6 +45,6 @@ public class CompteService {
     }
 
     public List<Compte> getAllComptes() {
-        return compteRepository.getAll();
+        return compteRepository.findAll();
     }
 }

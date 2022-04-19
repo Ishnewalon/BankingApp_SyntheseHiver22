@@ -7,6 +7,4 @@ import java.util.List;
 public interface CompteRepository extends JpaRepository<Compte, Integer> {
 
     Compte getByUser_CourrielAndUser_Mdp(String email, String password);
-
-    List<Compte> getAll();
 }

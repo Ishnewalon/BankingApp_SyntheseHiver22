@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class CompteController {
 
@@ -102,8 +104,9 @@ public class CompteController {
 
     @GetMapping("/toList/{currentCompte}")
     public String goToList(@PathVariable Compte currentCompte, Model model) {
+        List<Compte> compteList = compteService.getAllComptes();
         model.addAttribute("account", currentCompte);
-
+        model.addAttribute("accountList", compteList);
         return "clientList";
     }
 }
