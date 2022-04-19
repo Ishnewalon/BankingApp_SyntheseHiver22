@@ -103,6 +103,7 @@ public class CompteController {
     @GetMapping("/toList/{currentCompte}")
     public String goToList(@PathVariable Compte currentCompte, Model model) {
         model.addAttribute("account", currentCompte);
+
         return "clientList";
     }
 }

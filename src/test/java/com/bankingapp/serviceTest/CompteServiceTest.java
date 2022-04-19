@@ -16,6 +16,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ExtendWith(MockitoExtension.class)
 public class CompteServiceTest {
 
@@ -106,6 +109,16 @@ public class CompteServiceTest {
                 () -> compteService.deposerMontant(5, null));
     }
 
+    @Test
+    public void testGetAllComptes() {
+        List<Compte> dummyCompteListe = getDummyCompteList();
+        when(compteRepository.getAll()).thenReturn(dummyCompteListe);
+
+        List<Compte> actualCompteListe = compteService.getAllComptes();
+
+        assertThat(actualCompteListe.size()).isEqualTo(3);
+    }
+
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);
@@ -128,5 +141,30 @@ public class CompteServiceTest {
         dummyUser.setTelephone("514-654-2346");
 
         return dummyUser;
+    }
+
+    private List<Compte> getDummyCompteList() {
+        List<Compte> dummyCompteList = new ArrayList<>();
+
+        Compte dummyCompte1 = new Compte();
+        dummyCompte1.setId(1);
+        dummyCompte1.setSolde("100.00");
+        dummyCompte1.setUser(getDummyUser());
+
+        Compte dummyCompte2 = new Compte();
+        dummyCompte2.setId(2);
+        dummyCompte2.setSolde("200.00");
+        dummyCompte2.setUser(getDummyUser());
+
+        Compte dummyCompte3 = new Compte();
+        dummyCompte3.setId(3);
+        dummyCompte3.setSolde("300.00");
+        dummyCompte3.setUser(getDummyUser());
+
+        dummyCompteList.add(dummyCompte1);
+        dummyCompteList.add(dummyCompte2);
+        dummyCompteList.add(dummyCompte3);
+
+        return dummyCompteList;
     }
 }
