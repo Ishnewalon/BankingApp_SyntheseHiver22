@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+    <title>Money For Nothing</title>
+</head>
+<body>
+<div class="container">
+    <div th:object="${account}" >
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="${'/dashboard/' + account}">Home</a>
+                    <input type="hidden" th:name="compteCourrant" th:value="${account}"/>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="${'/toDeposit/' + account}">Déposer des fonds</a></li>
+                    <li><a th:href="${'/toWithdrawl/' + account}">Faire un retrait</a></li>
+                    <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
+                    <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/toList/' + account}">Voir liste clients</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/}">Se déconnecter</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div>
+            <h1>
+                Page de liste des clients
+            </h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

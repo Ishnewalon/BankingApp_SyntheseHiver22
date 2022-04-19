@@ -1,10 +1,7 @@
 package com.bankingapp.controllerTest;
 
 import com.bankingapp.controller.CompteController;
-import com.bankingapp.entity.Compte;
-import com.bankingapp.entity.Credentials;
-import com.bankingapp.entity.NewAccountDTO;
-import com.bankingapp.entity.User;
+import com.bankingapp.entity.*;
 import com.bankingapp.service.CompteService;
 import com.bankingapp.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -79,18 +76,6 @@ public class CompteControllerTest {
                 .andExpect(MockMvcResultMatchers.view().name("signup"));
     }
 
-   /* @Test
-    public void testGoToDeposit() throws Exception {
-        Compte dummyCompte = getDummyCompte();
-
-
-        mockMvc.perform(
-                MockMvcRequestBuilders.get("/toDeposit/" + dummyCompte)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(MAPPER.writeValueAsString(dummyCompte)))
-                .andExpect(MockMvcResultMatchers.view().name("deposit"));
-    }
-*/
     private Compte getDummyCompte() {
         Compte dummyCompte = new Compte();
         dummyCompte.setId(1);

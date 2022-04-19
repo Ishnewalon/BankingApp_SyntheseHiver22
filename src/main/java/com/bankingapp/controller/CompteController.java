@@ -99,4 +99,10 @@ public class CompteController {
         model.addAttribute("account", currentCompte);
         return "dashboard";
     }
+
+    @GetMapping("/toList/{currentCompte}")
+    public String goToList(@PathVariable Compte currentCompte, Model model) {
+        model.addAttribute("account", currentCompte);
+        return "clientList";
+    }
 }
