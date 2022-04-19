@@ -5,6 +5,8 @@ import com.bankingapp.repository.CompteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.List;
+
 @Service
 public class CompteService {
 
@@ -40,5 +42,9 @@ public class CompteService {
         double nouveauSolde = Double.parseDouble(compte.getSolde()) - montantADeposer;
         compte.setSolde(Double.toString(nouveauSolde));
         return create(compte);
+    }
+
+    public List<Compte> getAllComptes() {
+        return compteRepository.getAll();
     }
 }
