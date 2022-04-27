@@ -6,7 +6,7 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
   <title>Money For Nothing</title>
 </head>
-<body>
+<body id="background">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -25,21 +25,34 @@
   </div>
 </nav>
 <div class="container">
-  <div class="row">
-    Faire un dépôt
+  <div class="row text-center">
+   <h1>
+       Faire un dépôt
+   </h1>
   </div>
 
-  <div>
+  <div class="text-center">
       <form method="post" th:action="${'/makeDeposit/' + account}" th:object="${depositAmount}">
-       <div>
-         <label for="currentAmount">Fond présent</label>
-         <input class="writeMe" id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+       <div class="text-center">
+           <table class="center">
+               <tr>
+                   <td>
+                       <label for="currentAmount">Fond présent</label>
+                   </td>
+                   <td>
+                       <input class="writeMe" id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <label for="moneyAmount">Montant à déposer</label>
+                   </td>
+                   <td>
+                       <input class="writeMe" id="moneyAmount" name="moneyAmount" type="number">
+                   </td>
+               </tr>
+           </table>
        </div>
-
-        <div>
-          <label for="moneyAmount">Montant à déposer</label>
-          <input class="writeMe" id="moneyAmount" name="moneyAmount" type="number">
-        </div>
 
         <div class="row">
           <input id="deposit" type="submit" class="btn btn-success buttons" value="Déposer">
