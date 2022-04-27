@@ -6,7 +6,7 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
   <title>Money For Nothing</title>
 </head>
-<body>
+<body id="loginBackground">
   <div>
 
     <div>
@@ -18,20 +18,19 @@
         <div class="row">
           <h2>Courriel
           </h2>
-          <input id="courriel" name="courriel"/>
+          <input class="writeMe" id="courriel" name="courriel" autofocus/>
         </div>
         <div class="row">
           <h2>
             Mot de Passe
           </h2>
-          <input id="mdp" type="password" name="mdp"/>
+          <input class="writeMe" id="mdp" type="password" name="mdp"/>
         </div>
         <div class="row">
-          <input id="signin" type="submit" class="btn btn-success" value="Connexion">
+          <input id="signin" type="submit" class="btn btn-success buttons" value="Connexion">
         </div>
       </form>
     </div>
-
   </div>
 
 </body>

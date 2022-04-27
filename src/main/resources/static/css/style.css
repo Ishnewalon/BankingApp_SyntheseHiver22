@@ -39,3 +39,17 @@ h2 {
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
+#loginBackground {
+    background-image: url("/images/loginBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.writeMe {
+    width: 50%;
+}
+
+.buttons {
+    width: 25%;
+}

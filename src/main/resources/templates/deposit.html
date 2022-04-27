@@ -33,16 +33,16 @@
       <form method="post" th:action="${'/makeDeposit/' + account}" th:object="${depositAmount}">
        <div>
          <label for="currentAmount">Fond présent</label>
-         <input id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+         <input class="writeMe" id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
        </div>
 
         <div>
           <label for="moneyAmount">Montant à déposer</label>
-          <input id="moneyAmount" name="moneyAmount" type="number">
+          <input class="writeMe" id="moneyAmount" name="moneyAmount" type="number">
         </div>
 
         <div class="row">
-          <input id="deposit" type="submit" class="btn btn-success" value="Déposer">
+          <input id="deposit" type="submit" class="btn btn-success buttons" value="Déposer">
         </div>
 
       </form>
