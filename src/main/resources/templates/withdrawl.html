@@ -26,28 +26,42 @@
   </div>
 </nav>
 <div class="container">
-  <div class="row">
-    Faire un retrait
+  <div class="row text-center">
+    <h1>
+      Faire un dépôt
+    </h1>
   </div>
 
-  <div>
+  <div class="text-center">
     <form method="post" th:action="${'/makeWithdrawl/' + account}" th:object="${withdrawlAmount}">
-      <div>
-        <label for="currentAmount">Fond présent</label>
-        <input class="writeMe" id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
-      </div>
-
-      <div>
-        <label for="moneyAmount">Montant à retirer</label>
-        <input class="writeMe" id="moneyAmount" name="moneyAmount" type="number">
+      <div class="text-center">
+        <table class="center">
+          <tr>
+            <td>
+              <label for="currentAmount">Fond présent</label>
+            </td>
+            <td>
+              <input class="writeMe" id="currentAmount" name="currentAmount" th:value="${account.getSolde()}" >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="moneyAmount">Montant à retirer</label>
+            </td>
+            <td>
+              <input class="writeMe" id="moneyAmount" name="moneyAmount" type="number">
+            </td>
+          </tr>
+        </table>
       </div>
 
       <div class="row">
-        <input id="deposit" type="submit" class="btn btn-success buttons" value="Retirer">
+        <input id="withdrawl" type="submit" class="btn btn-success buttons" value="Retirer">
       </div>
 
     </form>
   </div>
+
 </div>
 </body>
 </html>
