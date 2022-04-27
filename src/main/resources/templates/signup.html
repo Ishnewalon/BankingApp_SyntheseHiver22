@@ -31,68 +31,91 @@
 
     <div th:align="center" >
         <form method="post" th:action="${'/ouverture/compte/' + account}" th:object="${nouveauClient}" >
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>
-                        Prénom
-                    </h2>
-                    <input id="prenom" name="prenom"/>
-                </div>
-                <div class="col-md-6">
-                    <h2>
-                        Nom
-                    </h2>
-                    <input id="nom" name="nom"/>
-                </div>
-            </div>
+            <table class="center">
+                <tr>
+                    <td>
+                        <h2>
+                            Prénom
+                        </h2>
+                    </td>
+                    <td>
+                        <h2>
+                            Nom
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="prenom" name="prenom"/>
+                    </td>
+                    <td>
+                        <input id="nom" name="nom"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>
+                            Numéro de téléphone
+                        </h2>
+                    </td>
+                    <td>
+                        <h2>
+                            Adresse
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="telephone" name="telephone"/>
+                    </td>
+                    <td>
+                        <input id="adresse" name="adresse"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>
+                            Âge
+                        </h2>
+                    </td>
+                    <td>
+                        <h2>
+                            Occupation
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="age" name="age"/>
+                    </td>
+                    <td>
+                        <input id="occupation" name="occupation"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>
+                            Courriel
+                        </h2>
+                    </td>
+                    <td>
+                        <h2>
+                            Mot de passe
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="courriel" name="courriel"/>
+                    </td>
+                    <td>
+                        <input type="password" id=mdp name="mdp"/>
+                    </td>
+                </tr>
+            </table>
 
             <div class="row">
-                <div class="col-md-6">
-                    <h2>
-                        Numéro de téléphone
-                    </h2>
-                    <input id="telephone" name="telephone"/>
-                </div>
-                <div class="col-md-6">
-                    <h2>
-                        Adresse
-                    </h2>
-                    <input id="adresse" name="adresse"/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>
-                        Âge
-                    </h2>
-                    <input id="age" name="age"/>
-                </div>
-                <div class="col-md-6">
-                    <h2>
-                        Occupation
-                    </h2>
-                    <input id="occupation" name="occupation"/>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>
-                        Courriel
-                    </h2>
-                    <input id="courriel" name="courriel"/>
-                </div>
-                <div class="col-md-6">
-                    <h2>
-                        Mot de passe
-                    </h2>
-                    <input type="password" id=mdp name="mdp"/>
-                </div>
-            </div>
-
-            <div class="row">
-                <input id="signup" type="submit" class="btn btn-success" value="Création">
+                <input id="signup" type="submit" class="btn btn-success buttons" value="Création">
             </div>
         </form>
     </div>
