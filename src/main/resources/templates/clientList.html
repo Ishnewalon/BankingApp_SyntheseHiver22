@@ -7,8 +7,6 @@
     <title>Money For Nothing</title>
 </head>
 <body id="background">
-<div class="container">
-    <div th:object="${account}" >
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -30,7 +28,7 @@
 
         <div class="container">
             <div th:if="${not #lists.isEmpty(accountList)}">
-                <h1 class="text-center">Liste des clients</h1>
+                <h1 class="text-center" id="bankName">Liste des clients</h1>
                 <table class="table table-striped">
                     <tr>
                         <th>Id</th>
@@ -63,7 +61,5 @@
             </div>
 
         </div>
-    </div>
-</div>
 </body>
 </html>
