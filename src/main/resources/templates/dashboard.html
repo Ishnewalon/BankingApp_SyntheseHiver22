@@ -7,8 +7,6 @@
     <title>Money For Nothing</title>
 </head>
 <body id="background">
-    <div class="container">
-        <div th:object="${account}" >
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -27,11 +25,12 @@
 
                 </div>
             </nav>
-            <h1>Bonjour
-                <span th:text="${account.user.prenom}"></span>
-                <span th:text="${account.user.nom}"></span>
-            </h1>
-        </div>
-    </div>
+            <div class="text-center">
+                <h1 id="bankName">Bonjour
+                    <span th:text="${account.user.prenom}"></span>
+                    <span th:text="${account.user.nom}"></span>
+                </h1>
+            </div>
+
 </body>
 </html>
