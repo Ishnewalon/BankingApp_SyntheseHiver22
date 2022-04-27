@@ -16,7 +16,7 @@
     <ul class="nav navbar-nav">
       <li><a th:href="${'/toDeposit/' + account}">Déposer des fonds</a></li>
       <li><a th:href="${'/toWithdrawl/' + account}">Faire un retrait</a></li>
-      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account.user.courriel + '/' + account.user.mdp}">Ouverture de compte</a></li>
+      <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/signup/' + account}">Ouverture de compte</a></li>
       <li th:if="${account.user.occupation} == 'Admin'" ><a th:href="${'/toList/' + account}">Voir liste clients</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

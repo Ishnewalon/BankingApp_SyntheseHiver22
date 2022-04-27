@@ -24,8 +24,8 @@ public class CompteController {
         this.userService = userService;
     }
 
-    @PostMapping("/ouverture/compte")
-    public String ouvertureCompte(@ModelAttribute("nouveauClient") NewAccountDTO newAccountDTO, Model model) {
+    @PostMapping("/ouverture/compte{currentCompte}")
+    public String ouvertureCompte(@ModelAttribute("nouveauClient") NewAccountDTO newAccountDTO, @PathVariable Compte currentCompte, Model model) {
         User nouveauClient = new User();
         nouveauClient.setNom(newAccountDTO.getNom());
         nouveauClient.setPrenom(newAccountDTO.getPrenom());
@@ -41,8 +41,7 @@ public class CompteController {
         nouveauCompte.setUser(nouveauClient);
         nouveauCompte.setSolde("0.00");
         compteService.create(nouveauCompte);
-        Compte compte = compteService.findAccount(newAccountDTO.getAdminEmail(), newAccountDTO.getAdminPassword());
-        model.addAttribute("account", compte);
+        model.addAttribute("account", currentCompte);
 
         return "dashboard";
     }
@@ -59,12 +58,11 @@ public class CompteController {
         return "dashboard";
     }
 
-    @GetMapping("/signup/{courriel}/{mdp}")
-    public String goToSignUp(Model model, @PathVariable String courriel, @PathVariable String mdp) {
+    @GetMapping("/signup/{currentCompte}")
+    public String goToSignUp(@PathVariable Compte currentCompte, Model model) {
        NewAccountDTO newAccountDTO = new NewAccountDTO();
         model.addAttribute("nouveauClient",newAccountDTO);
-        model.addAttribute("adminEmail", courriel);
-        model.addAttribute("adminPassword", mdp);
+        model.addAttribute("account", currentCompte);
         return "signup";
     }
 
